@@ -35,9 +35,11 @@ public class GridImpl implements Grid {
             throw new IllegalArgumentException("Position out of bounds");
         if (piece == null || piece == PieceColour.NONE)
             throw new IllegalArgumentException("Invalid piece colour");
-
+        if (board[row][col] != PieceColour.NONE)
+            throw new IllegalArgumentException("Position already occupied");
         board[row][col] = piece;
     }
+
 
     @Override
     public Grid copy() {

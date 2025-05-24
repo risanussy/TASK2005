@@ -50,6 +50,10 @@ public class GameImpl implements Game {
 
     @Override
     public void makeMove(Move move) {
+        if (over) 
+            throw new IllegalStateException("Game is already over");
+
+
         if (move == null) throw new IllegalArgumentException("Move is null");
         int r = move.getRow(), c = move.getCol();
         if (r < 0 || r >= grid.getSize() || c < 0 || c >= grid.getSize())
